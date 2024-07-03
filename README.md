@@ -15,7 +15,7 @@ Make sure the system contains adequate amount of main memory space (minimal: 20 
 ### Software Stacks
 You should install the following native libraries manually in advance.
 
-- CUDA 12.2
+- CUDA 11.8
 
 CUDA is essential for PyTorch to enable GPU-accelerated deep neural network training. Please see https://docs.nvidia.com/cuda/cuda-installation-guide-linux/ .
 
