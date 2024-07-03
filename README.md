@@ -1,4 +1,4 @@
-# Deep learning for comprehensively assessing chronic gastritis from whole-slide images: a multicenter, retrospective cohort study.
+# Deep learning for comprehensively assessing chronic gastritis: a multicenter, retrospective cohort study.
 
 This repository provides scripts to reproduce the results in the paper "Deep learning for comprehensively assessing chronic gastritis from whole-slide images: a multicenter, retrospective cohort study".
 
