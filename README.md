@@ -48,6 +48,8 @@ Please see the installation guide in https://github.com/openslide/openslide.
 
 ### Whole-slide images model (GastritisMIL)
 
+Here, we take the config with 40x-magnified input, which possibly for modified for your own dataset.
+
 Our model requires slide-level labels to be trained and tested
 
 
