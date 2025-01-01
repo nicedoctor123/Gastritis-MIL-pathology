@@ -1,4 +1,4 @@
-# Deep learning for comprehensively assessing chronic gastritis: a multicenter, retrospective cohort study.
+# Comprehensive Assessment of Chronic Gastritis: A Multicenter Retrospective Cohort Study Leveraging Deep Learning
 
 This repository provides scripts to reproduce the results in the paper "Deep learning for comprehensively assessing chronic gastritis from whole-slide images: a multicenter, retrospective cohort study".
 
@@ -15,11 +15,11 @@ Make sure the system contains adequate amount of main memory space (minimal: 20 
 ### Software Stacks
 You should install the following native libraries manually in advance.
 
-- CUDA 11.8
+- CUDA 11.1
 
 CUDA is essential for PyTorch to enable GPU-accelerated deep neural network training. Please see https://docs.nvidia.com/cuda/cuda-installation-guide-linux/ .
 
-- Python 3.11
+- Python 3.9.20
 
 The development kit should be installed.
 ```
