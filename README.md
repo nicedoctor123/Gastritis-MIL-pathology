@@ -23,7 +23,7 @@ CUDA is essential for PyTorch to enable GPU-accelerated deep neural network trai
 
 The development kit should be installed.
 ```
-sudo apt install python3.11-dev
+sudo apt install python3.9-dev
 ```
 
 - OpenSlide 1.3.1
