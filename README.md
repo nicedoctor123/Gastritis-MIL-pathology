@@ -8,6 +8,10 @@ GastritisMIL performed similarly to the two senior pathologists and outperformed
 ## Pubilications
 Submitted to the jounal
 (The complete code for our model will be made openly available for educational purposes in the future.)
+
+## Model Weights
+Due to the large size of the weight file, it cannot be uploaded to GitHub. Please download it from the following Google Drive link.
+Please see https://drive.google.com/drive/folders/1M5kGVhZDXkNlSYmF4myFfYiVo1JRKgoT?usp=sharing.
 ## Requirements
 ### Hardware Requirements
 Make sure the system contains adequate amount of main memory space (minimal: 20 GB) to prevent out-of-memory error.
