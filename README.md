@@ -98,6 +98,38 @@ def load_pretrained_weights(model, name):
     return model
 ```
 
+`extract_features_new.py`:
+```
+def compute_w_loader(file_path, output_path, wsi, model,
+ 	batch_size = 8, verbose = 0, print_every=20, pretrained=True, 
+	custom_downsample=1, target_patch_size=-1):
+
+	dataset = Whole_Slide_Bag_FP(file_path=file_path, wsi=wsi, pretrained=pretrained, 
+		custom_downsample=custom_downsample, target_patch_size=target_patch_size)
+
+	x, y = dataset[0]
+	kwargs = {'num_workers': 16, 'pin_memory': True} if device.type == "cuda" else {}
+	loader = DataLoader(dataset=dataset, batch_size=batch_size, **kwargs, collate_fn=collate_features) 
+
+	if verbose > 0: 
+		print(f'processing {file_path}: total of {len(loader)} batches')
+
+	mode = 'w'
+	for count, (batch, coords) in enumerate(loader):
+		with torch.no_grad():	
+			if count % print_every == 0:
+				print(f'batch {count}/{len(loader)}, { count * batch_size} files processed')
+			batch = batch.to(device, non_blocking=True)
+			
+			features = model(batch)
+			features = features.cpu().numpy()
+
+			asset_dict = {'features': features, 'coords': coords}
+			save_hdf5(output_path, asset_dict, attr_dict= None, mode=mode)
+			mode = 'a'
+	
+	return output_path
+```
 ### Train GastritisMIL
 The complete code will undergo thorough insepection, organization, and updates after publication.
 Note: label 1 = Task 1 Inflammation, label 2 = Task 2 Activity, label 3 = Task 3 Antrum, label 4 = Task 4 Intestinal Metaplasia
