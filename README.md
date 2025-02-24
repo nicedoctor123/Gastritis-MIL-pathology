@@ -10,8 +10,7 @@ Major Revision
 (The complete code for our model will be made openly available for educational purposes in the future.)
 
 ## Model Weights
-Due to the large size of the weight file, it cannot be uploaded to GitHub. Please download it from the following Google Drive link.
-Please see [this](https://drive.google.com/drive/folders/1M5kGVhZDXkNlSYmF4myFfYiVo1JRKgoT?usp=sharing).
+Due to the large size of the weight file, it cannot be uploaded to GitHub. Please download it from this following [Google Drive link](https://drive.google.com/drive/folders/1M5kGVhZDXkNlSYmF4myFfYiVo1JRKgoT?usp=sharing).
 
 ## Standard datasets for publication
 Our dataset required one and a half years of meticulous collection and rigorous review. This extensive effort has resulted in a valuable resource that bridges a gap in CG assessment. To enable future researchers to utilize similar dataset for developing more efficient models and advancing data science, the data for which permission has been granted (800 WSIs and associated labels) can currently be released.
