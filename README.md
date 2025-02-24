@@ -143,7 +143,7 @@ def evaluate(model, dataloader, device):
 
     return slide_ids, labels, preds, probs
 ```
-You can load the aforementioned model weights in the model_pretrain section.
+You can load the aforementioned model weights in the `model_pretrain` section.
 
 ```shell
 python Inference.py \
