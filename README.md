@@ -151,7 +151,7 @@ python Inference.py \
 --label_dir ... \
 --fea_dir ... \
 --output_dir ... \
---model_name GastritisMIl \
+--model_name GastritisMIL \
 --model_pretrain ...
 ```
 
