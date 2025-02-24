@@ -68,6 +68,8 @@ To preprocess WSIs, we used [CLAM](https://github.com/mahmoodlab/CLAM/tree/maste
 
 ### Patching
 By utilizing the following code, you can save the corresponding mask of the pathological images, and subsequently segment the image into patches based on the mask to obtain the respective coordinates.
+
+
 `create_patches_by_hsv2.py`:
 
 ```shell
