@@ -19,96 +19,6 @@ To the best of our knowledge, these data will currently be the first and largest
 
 Please see [this](https://www.scidb.cn/detail?dataSetId=83ee1521074742cdaae997cf0b46a7b1&version=V1) in ScienceDB platform.
 
-## Prepare Patch Futures
-To preprocess WSIs, we used [CLAM](https://github.com/mahmoodlab/CLAM/tree/master#wsi-segmentation-and-patching). ResNet50 model and weight can be found in [this](https://github.com/pytorch/vision).
-
-### Patching
-By utilizing the following code, you can save the corresponding mask of the pathological images, and subsequently segment the image into patches based on the mask to obtain the respective coordinates.
-`create_patches_by_hsv2.py`:
-
-```shell
-python creat_patches_by_hsv2.py \
---source ./gastritis/Data_Directory \
---patch_size 256 \
---patch_level 0 \
---save_dir ./gastritis/40x_coord \
---downsample_factor 1.0
-```
-
-### Feature Extraction
-`resnet_custom.py`:
-```
-def resnet50_baseline(pretrained=False):
-    """Constructs a Modified ResNet-50 model.
-    Args:
-        pretrained (bool): If True, returns a model pre-trained on ImageNet
-    """
-    model = ResNet_Baseline(Bottleneck_Baseline, [3, 4, 6, 3])
-    if pretrained:
-        model = load_pretrained_weights(model, 'resnet50')
-    return model
-
-def load_pretrained_weights(model, name):
-    pretrained_dict = model_zoo.load_url(model_urls[name])
-    model.load_state_dict(pretrained_dict, strict=False)
-    return model
-```
-
-## Train GastritisMIL
-The complete code will undergo thorough insepection, organization, and updates after publication.
-Note: label 1 = Task 1 Inflammation, label 2 = Task 2 Activity, label 3 = Task 3 Antrum, label 4 = Task 4 Intestinal Metaplasia
-
-`train.py`:
-
-```shell
-python train.py \
---seed 1024 \
---model_name GastritisMIL \
---label_name label1 \
---batch_size 128 \
---fea_dir ... \
---feat_size 1024 \
---output_dir ... 
-```
-
-## Inference
-
-`Inference.py`:
-
-```
-def evaluate(model, dataloader, device):
-    model.eval()
-    
-    with torch.no_grad():
-        slide_ids, preds, labels, probs= [],[],[],[]
-
-        for slide_id, bag, label in dataloader:
-            slide_id = slide_id[0]
-            bag = bag.squeeze(0) 
-
-            bag = bag.to(device)
-            label = label.to(device)
-            output = model(bag)
-            _, pred = torch.max(output, dim=1)
-
-            slide_ids.append(slide_id)
-            preds.append(pred.detach().item())
-            labels.append(label.detach().item())
-            probs.append(softmax(output).detach().cpu().numpy().squeeze(0))
-
-    return slide_ids, labels, preds, probs
-```
-You can load the aforementioned model weights in the model_pretrain section.
-
-```shell
-python Inference.py \
---label_name label1 \
---label_dir ... \
---fea_dir ... \
---output_dir ... \
---model_name GastritisMIl \
---model_pretrain ...
-```
 
 ## Requirements
 ### Hardware Requirements
@@ -154,8 +64,96 @@ Here, we take the config with 40x-magnified input, which possibly for modified f
 
 Our model requires slide-level labels to be trained and tested.
 
+### Prepare Patch Futures
+To preprocess WSIs, we used [CLAM](https://github.com/mahmoodlab/CLAM/tree/master#wsi-segmentation-and-patching). ResNet50 model and weight can be found in [this](https://github.com/pytorch/vision).
 
+### Patching
+By utilizing the following code, you can save the corresponding mask of the pathological images, and subsequently segment the image into patches based on the mask to obtain the respective coordinates.
+`create_patches_by_hsv2.py`:
 
+```shell
+python creat_patches_by_hsv2.py \
+--source ./gastritis/Data_Directory \
+--patch_size 256 \
+--patch_level 0 \
+--save_dir ./gastritis/40x_coord \
+--downsample_factor 1.0
+```
+
+### Feature Extraction
+`resnet_custom.py`:
+```
+def resnet50_baseline(pretrained=False):
+    """Constructs a Modified ResNet-50 model.
+    Args:
+        pretrained (bool): If True, returns a model pre-trained on ImageNet
+    """
+    model = ResNet_Baseline(Bottleneck_Baseline, [3, 4, 6, 3])
+    if pretrained:
+        model = load_pretrained_weights(model, 'resnet50')
+    return model
+
+def load_pretrained_weights(model, name):
+    pretrained_dict = model_zoo.load_url(model_urls[name])
+    model.load_state_dict(pretrained_dict, strict=False)
+    return model
+```
+
+### Train GastritisMIL
+The complete code will undergo thorough insepection, organization, and updates after publication.
+Note: label 1 = Task 1 Inflammation, label 2 = Task 2 Activity, label 3 = Task 3 Antrum, label 4 = Task 4 Intestinal Metaplasia
+
+`train.py`:
+
+```shell
+python train.py \
+--seed 1024 \
+--model_name GastritisMIL \
+--label_name label1 \
+--batch_size 128 \
+--fea_dir ... \
+--feat_size 1024 \
+--output_dir ... 
+```
+
+### Inference
+
+`Inference.py`:
+
+```
+def evaluate(model, dataloader, device):
+    model.eval()
+    
+    with torch.no_grad():
+        slide_ids, preds, labels, probs= [],[],[],[]
+
+        for slide_id, bag, label in dataloader:
+            slide_id = slide_id[0]
+            bag = bag.squeeze(0) 
+
+            bag = bag.to(device)
+            label = label.to(device)
+            output = model(bag)
+            _, pred = torch.max(output, dim=1)
+
+            slide_ids.append(slide_id)
+            preds.append(pred.detach().item())
+            labels.append(label.detach().item())
+            probs.append(softmax(output).detach().cpu().numpy().squeeze(0))
+
+    return slide_ids, labels, preds, probs
+```
+You can load the aforementioned model weights in the model_pretrain section.
+
+```shell
+python Inference.py \
+--label_name label1 \
+--label_dir ... \
+--fea_dir ... \
+--output_dir ... \
+--model_name GastritisMIl \
+--model_pretrain ...
+```
 
 
 
