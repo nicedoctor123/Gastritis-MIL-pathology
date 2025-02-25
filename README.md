@@ -7,6 +7,7 @@ GastritisMIL performed similarly to the two senior pathologists and outperformed
 
 ## Pubilications
 Major Revision
+
 (The complete code for our model will be made openly available for educational purposes in the future.)
 
 ## Model Weights
