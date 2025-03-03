@@ -21,8 +21,6 @@ Please see [this](https://www.scidb.cn/detail?dataSetId=83ee1521074742cdaae997cf
 
 
 ## Requirements
-### Hardware Requirements
-Make sure the system contains adequate amount of main memory space (minimal: 20 GB) to prevent out-of-memory error.
 
 ### Software Stacks
 You should install the following native libraries manually in advance.
@@ -65,7 +63,9 @@ Here, we take the config with 40x-magnified input, which possibly for modified f
 Our model requires slide-level labels to be trained and tested.
 
 ### Prepare Patch Futures
-To preprocess WSIs, we used [CLAM](https://github.com/mahmoodlab/CLAM/tree/master#wsi-segmentation-and-patching). ResNet50 model and weight can be found in [this](https://github.com/pytorch/vision).
+To preprocess WSIs, we used [CLAM](https://github.com/mahmoodlab/CLAM/tree/master#wsi-segmentation-and-patching). 
+ResNet50 model and weight can be found in [this](https://github.com/pytorch/vision).
+The code for other feature extractors is currently being organized and will be updated upon acceptance of the manuscript. 
 
 ### Patching
 By utilizing the following code, you can save the corresponding mask of the pathological images, and subsequently segment the image into patches based on the mask to obtain the respective coordinates.
