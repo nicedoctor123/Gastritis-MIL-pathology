@@ -3,7 +3,7 @@
 This repository provides scripts to reproduce the results in the paper "GastritisMIL: an interpretable deep learning model for the comprehensive histological assessment of chronic gastritis".
 
 GastritisMIL performed similarly to the two senior pathologists and outperformed the junior pathologist by a large extent, efficiently identifying abnormal alterations with a WSI-level interpretation heatmap and reducing the risk of missed diagnoses.
-![image](https://github.com/nicedoctor123/Gastritis-MIL-pathology/blob/main/example.png)
+![image](https://github.com/nicedoctor123/Gastritis-MIL-pathology/blob/main/Workflow.png)
 
 ## Pubilications
 Accept in press
