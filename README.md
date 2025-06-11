@@ -187,6 +187,26 @@ python Inference.py \
 --model_pretrain ...
 ```
 
+## Citation
+
+```
+@article{xia:patterns:2025,
+  title = {GastritisMIL: An interpretable deep learning model for the comprehensive histological assessment of chronic gastritis},
+  author = {Xia, Kun and Hu, Yihuang and Cai, Shuntian and Lin, Mengjie and Lu, Mingzhi and Lu, Huadong and Ye, Yuhan and Lin, Fenglian and Gao, Liang and Xia, Qingan and Tian, Ruihua and Lin, Weiping and Xie, Lei and Tan, Decheng and Lu, Yapi and Lin, Xunting and Yang, Xiaoning and Zhong, Lingfeng and Xu, Lei and Zhang, Zhixin and Wang, Liansheng and Ren, Jianlin and Xu, Hongzhi},
+  journal = {Patterns},
+  year = {2025},
+  doi = {https://doi.org/10.1016/j.patter.2025.101286},
+}
+
+@misc{Xia2025,
+  author       = {Xia, K. and Hu, Y. and Wang, L. and Xu, H.},
+  title        = {Comprehensive Assessment of Chronic Gastritis on WSI Data},
+  year         = {2025},
+  note         = {ScienceDB},
+  doi          = {10.57760/sciencedb.19700},
+  url          = {https://doi.org/10.57760/sciencedb.19700},
+}
+```
 
 
 
