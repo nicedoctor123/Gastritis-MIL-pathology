@@ -6,7 +6,8 @@ GastritisMIL performed similarly to the two senior pathologists and outperformed
 ![image](https://github.com/nicedoctor123/Gastritis-MIL-pathology/blob/main/Workflow.png)
 
 ## Pubilications
-Accept in press
+Accept in press. 
+Please download it from this following [link]([https://www.sciencedirect.com/science/article/pii/S2666389925001345]).
 
 ## Model Weights
 Due to the large size of the weight file, it cannot be uploaded to GitHub. Please download it from this following [Google Drive link](https://drive.google.com/drive/folders/1M5kGVhZDXkNlSYmF4myFfYiVo1JRKgoT?usp=sharing).
